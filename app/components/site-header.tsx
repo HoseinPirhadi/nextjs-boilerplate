@@ -3,11 +3,19 @@
 import { FormEvent, useState } from "react";
 
 const navItems = [
-  { label: "شهرها", href: "#cities" },
-  { label: "قالیشویی‌ها", href: "#cleaners" },
+  { label: "استان‌ها", href: "/ostan-ha" },
   { label: "قیمت خدمات", href: "#prices" },
   { label: "راهنمای انتخاب", href: "#guide" },
 ];
+
+function SearchIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="11" cy="11" r="6.5" />
+      <path d="m16 16 4.5 4.5" />
+    </svg>
+  );
+}
 
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -24,7 +32,11 @@ export default function SiteHeader() {
   return (
     <header className="site-header-wrap" dir="rtl">
       <div className="site-header">
-        <a className="site-logo" href="/" aria-label="قالی مپ؛ راهنمای قالیشویی و خدمات شست‌وشوی فرش">
+        <a
+          className="site-logo"
+          href="/"
+          aria-label="قالی مپ؛ راهنمای قالیشویی و خدمات شست‌وشوی فرش"
+        >
           <span className="site-logo-mark" aria-hidden="true">ق</span>
           <span className="site-logo-text">
             <strong>قالی مپ</strong>
@@ -44,15 +56,15 @@ export default function SiteHeader() {
           <button
             type="button"
             className="site-search-trigger"
-            aria-label="جستجوی شهر یا منطقه"
+            aria-label="جستجوی شهر، منطقه یا محله"
             aria-expanded={searchOpen}
             onClick={() => setSearchOpen((value) => !value)}
           >
-            <span className="site-search-icon" aria-hidden="true">⌕</span>
+            <SearchIcon />
             <span>جستجو</span>
           </button>
 
-          <a className="site-header-cta" href="#cleaners">
+          <a className="site-header-cta" href="/ostan-ha">
             پیدا کردن قالیشویی
           </a>
         </div>
@@ -70,9 +82,9 @@ export default function SiteHeader() {
 
       {searchOpen && (
         <form className="site-search-panel" role="search" onSubmit={submitSearch}>
-          <label htmlFor="site-search-input">جستجوی شهر یا منطقه</label>
+          <label htmlFor="site-search-input">جستجوی شهر، منطقه یا محله</label>
           <div className="site-search-box">
-            <span className="site-search-icon" aria-hidden="true">⌕</span>
+            <SearchIcon />
             <input
               id="site-search-input"
               name="q"
@@ -84,13 +96,13 @@ export default function SiteHeader() {
             />
             <button type="submit">جستجو</button>
           </div>
-          <p>نام شهر، منطقه یا محله را جستجو کنید.</p>
+          <p>نام شهر، منطقه یا محله را وارد کنید.</p>
         </form>
       )}
 
       <div className={`site-mobile-menu ${open ? "is-open" : ""}`}>
         <form className="site-mobile-search" role="search" onSubmit={submitSearch}>
-          <label htmlFor="mobile-search-input">جستجوی شهر یا منطقه</label>
+          <label htmlFor="mobile-search-input">جستجوی شهر، منطقه یا محله</label>
           <div>
             <input
               id="mobile-search-input"
@@ -100,7 +112,9 @@ export default function SiteHeader() {
               onChange={(event) => setQuery(event.target.value)}
               placeholder="جستجوی شهر یا منطقه"
             />
-            <button type="submit" aria-label="جستجو">⌕</button>
+            <button type="submit" aria-label="جستجو">
+              <SearchIcon />
+            </button>
           </div>
         </form>
 
@@ -112,7 +126,7 @@ export default function SiteHeader() {
           ))}
         </nav>
 
-        <a className="site-mobile-cta" href="#cleaners" onClick={() => setOpen(false)}>
+        <a className="site-mobile-cta" href="/ostan-ha" onClick={() => setOpen(false)}>
           پیدا کردن قالیشویی
         </a>
       </div>
