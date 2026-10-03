@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 
+type ItemId = "cleaners" | "about" | "prices" | "areas" | "faq" | "reviews";
+
 const items = [
   ["cleaners", "قالیشویی‌ها"],
   ["about", "درباره این محدوده"],
@@ -12,7 +14,7 @@ const items = [
 ] as const;
 
 export default function LocationAnchorNav() {
-  const [active, setActive] = useState(items[0][0]);
+  const [active, setActive] = useState<ItemId>(items[0][0]);
 
   useEffect(() => {
     const sections = items
@@ -25,7 +27,10 @@ export default function LocationAnchorNav() {
           .filter((entry) => entry.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
 
-        if (visible[0]?.target.id) setActive(visible[0].target.id);
+        const nextActive = visible[0]?.target.id;
+        if (nextActive && items.some(([id]) => id === nextActive)) {
+          setActive(nextActive as ItemId);
+        }
       },
       {
         rootMargin: "-132px 0px -55% 0px",
