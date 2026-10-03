@@ -185,7 +185,7 @@ export default function SiteHeader() {
         <nav aria-label="ناوبری موبایل">
           {navItems.map((item, index) => (
             <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)}>
-              <span className="site-drawer-index">۰{index + ۱}</span>
+              <span className="site-drawer-index">۰{index + 1}</span>
               <span>{item.label}</span>
               <span className="site-drawer-arrow" aria-hidden="true">←</span>
             </a>
