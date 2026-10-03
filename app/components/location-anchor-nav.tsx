@@ -16,6 +16,7 @@ const items: readonly [ItemId, string][] = [
 export default function LocationAnchorNav() {
   const [active, setActive] = useState<ItemId>("cleaners");
   const navRef = useRef<HTMLDivElement>(null);
+  const activeRef = useRef<ItemId>("cleaners");
 
   useEffect(() => {
     const sections = items
@@ -23,22 +24,36 @@ export default function LocationAnchorNav() {
       .filter((section): section is HTMLElement => Boolean(section));
 
     const update = () => {
-      const marker = window.scrollY + 220;
+      const marker = window.scrollY + 210;
       let current: ItemId = "cleaners";
+
       for (const section of sections) {
-        if (section.getBoundingClientRect().top + window.scrollY <= marker) {
-          current = section.id as ItemId;
-        }
+        if (section.offsetTop <= marker) current = section.id as ItemId;
       }
+
+      if (current === activeRef.current) return;
+      activeRef.current = current;
       setActive(current);
 
-      const activeButton = navRef.current?.querySelector<HTMLAnchorElement>(`a[data-section="${current}"]`);
-      activeButton?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+      if (window.matchMedia("(max-width: 900px)").matches) {
+        const activeButton = navRef.current?.querySelector<HTMLAnchorElement>(
+          `a[data-section="${current}"]`
+        );
+        activeButton?.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+          inline: "center",
+        });
+      }
     };
 
     update();
     window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
   }, []);
 
   return (
