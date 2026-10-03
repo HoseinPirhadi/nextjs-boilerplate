@@ -1,4 +1,5 @@
 import SiteHeader from "./components/site-header";
+import SiteFooter from "./components/site-footer";
 
 export default function Home() {
   return (
@@ -46,6 +47,8 @@ export default function Home() {
       <section id="guide" className="preview-section preview-section-tall">
         <div className="preview-placeholder"><span>راهنمای انتخاب</span></div>
       </section>
+
+      <SiteFooter />
     </main>
   );
 }
