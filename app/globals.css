@@ -945,3 +945,245 @@ body.header-drawer-open { overflow: hidden; }
 .location-price-row{grid-template-columns:25px 1fr auto}
 .location-area-grid,.location-related-list{grid-template-columns:1fr}
 }
+
+
+/* Persian RTL layout corrections */
+.location-page {
+  direction: rtl;
+  text-align: right;
+}
+
+.location-page .location-shell,
+.location-page .location-section,
+.location-page .location-hero-copy,
+.location-page .location-quick-card,
+.location-page .location-section-heading,
+.location-page .location-cleaner-card,
+.location-page .location-about-copy,
+.location-page .location-review-summary,
+.location-page .location-review-card,
+.location-page .location-related {
+  direction: rtl;
+  text-align: right;
+}
+
+.location-breadcrumb {
+  justify-content: flex-start;
+  direction: rtl;
+}
+
+.location-hero-grid {
+  direction: rtl;
+}
+
+.location-hero-copy {
+  order: 1;
+}
+
+.location-quick-card {
+  order: 2;
+}
+
+.location-hero-meta,
+.location-hero-actions,
+.location-service-tags,
+.location-cleaner-badges {
+  direction: rtl;
+  justify-content: flex-start;
+}
+
+.location-primary-action,
+.location-secondary-action {
+  direction: rtl;
+}
+
+.location-anchor-inner {
+  direction: rtl;
+  justify-content: flex-start;
+}
+
+.location-section-heading {
+  direction: rtl;
+}
+
+.location-section-heading > div:first-child {
+  min-width: 0;
+}
+
+.location-count,
+.location-price-note {
+  direction: rtl;
+}
+
+.location-cleaner-grid {
+  direction: rtl;
+}
+
+.location-cleaner-top {
+  direction: rtl;
+  justify-content: flex-start;
+}
+
+.location-cleaner-title {
+  text-align: right;
+}
+
+.location-cleaner-card > p {
+  text-align: right;
+}
+
+.location-cleaner-actions {
+  direction: rtl;
+}
+
+.location-phone-button {
+  direction: rtl;
+}
+
+.location-about {
+  direction: rtl;
+}
+
+.location-about-copy {
+  order: 1;
+}
+
+.location-about-points {
+  order: 2;
+  direction: rtl;
+}
+
+.location-about-points div {
+  direction: rtl;
+  justify-content: flex-start;
+}
+
+.location-price-table {
+  direction: rtl;
+}
+
+.location-price-row {
+  direction: rtl;
+  text-align: right;
+}
+
+.location-price-row b {
+  justify-self: end;
+}
+
+.location-price-row > span:nth-child(3) {
+  text-align: right;
+}
+
+.location-area-grid {
+  direction: rtl;
+}
+
+.location-area-grid a,
+.location-related-list a {
+  direction: rtl;
+}
+
+.location-area-grid a svg,
+.location-related-list a svg,
+.location-more-button svg {
+  transform: rotate(180deg);
+}
+
+.location-faq-list {
+  direction: rtl;
+}
+
+.location-faq-list summary {
+  direction: rtl;
+  text-align: right;
+}
+
+.location-faq-list summary b {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+.location-reviews {
+  direction: rtl;
+}
+
+.location-review-summary {
+  order: 1;
+}
+
+.location-review-card {
+  order: 2;
+}
+
+.location-review-card-top {
+  direction: rtl;
+}
+
+.location-rating,
+.location-review-stars {
+  direction: rtl;
+  justify-content: flex-start;
+}
+
+.location-related {
+  direction: rtl;
+}
+
+.location-related > div:first-child {
+  order: 1;
+}
+
+.location-related-list {
+  order: 2;
+  direction: rtl;
+}
+
+@media (max-width: 900px) {
+  .location-hero-grid,
+  .location-about,
+  .location-reviews {
+    direction: rtl;
+  }
+
+  .location-about-copy,
+  .location-about-points,
+  .location-review-summary,
+  .location-review-card {
+    order: initial;
+  }
+
+  .location-related-list {
+    direction: rtl;
+  }
+}
+
+@media (max-width: 640px) {
+  .location-hero-copy,
+  .location-quick-card,
+  .location-section-heading,
+  .location-cleaner-card,
+  .location-about-copy,
+  .location-review-summary,
+  .location-review-card,
+  .location-related {
+    text-align: right;
+  }
+
+  .location-hero-actions {
+    direction: rtl;
+  }
+
+  .location-anchor-inner {
+    justify-content: flex-start;
+  }
+
+  .location-price-row {
+    direction: rtl;
+  }
+
+  .location-area-grid,
+  .location-related-list {
+    direction: rtl;
+  }
+}
