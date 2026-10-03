@@ -214,7 +214,7 @@ export default function Home() {
           <div className="location-price-table">
             {prices.map((item, index) => (
               <div className="location-price-row" key={item.title}>
-                <span className="location-price-index">۰{index + ۱}</span>
+                <span className="location-price-index">۰{index + 1}</span>
                 <strong>{item.title}</strong>
                 <span>{item.unit}</span>
                 <b>{item.price}</b>
