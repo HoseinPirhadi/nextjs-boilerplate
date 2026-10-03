@@ -128,7 +128,7 @@ export default function Home() {
         <section id="prices" className="m3-section">
           <header className="m3-section-head"><div><span className="m3-overline">قیمت خدمات</span><h2>قیمت تقریبی قالیشویی</h2><p>اعداد برای مقایسه اولیه هستند و با شرایط سفارش تغییر می‌کنند.</p></div><span className="m3-update">به‌روزرسانی شهریور ۱۴۰۵</span></header>
           <div className="m3-price-card">
-            {prices.map(([title, unit, price], i) => <div className="m3-price-row" key={title}><span className="m3-price-num">۰{i + ۱}</span><div><strong>{title}</strong><span>{unit}</span></div><b>{price}</b></div>)}
+            {prices.map(([title, unit, price], i) => <div className="m3-price-row" key={title}><span className="m3-price-num">۰{i + 1}</span><div><strong>{title}</strong><span>{unit}</span></div><b>{price}</b></div>)}
           </div>
         </section>
 
