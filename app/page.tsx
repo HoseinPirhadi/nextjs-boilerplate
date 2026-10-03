@@ -3,113 +3,63 @@ import SiteFooter from "./components/site-footer";
 import LocationAnchorNav from "./components/location-anchor-nav";
 
 const featuredCleaners = [
-  {
-    name: "قالیشویی پاک‌نگار",
-    description: "شست‌وشوی تخصصی فرش و خدمات تکمیلی با ثبت سفارش در محدوده تهران.",
-    verified: true,
-    ad: true,
-    services: ["شست‌وشوی فرش", "مبل‌شویی", "ترمیم"],
-    logo: "پ",
-  },
-  {
-    name: "قالیشویی فرشینه",
-    description: "پوشش مناطق مختلف تهران با سرویس جمع‌آوری و تحویل فرش.",
-    verified: true,
-    ad: false,
-    services: ["قالیشویی", "موکت‌شویی", "مبل‌شویی"],
-    logo: "ف",
-  },
+  { name: "قالیشویی پاک‌نگار", description: "شست‌وشوی تخصصی فرش و خدمات تکمیلی با پوشش تهران.", verified: true, ad: true, services: ["شست‌وشوی فرش", "مبل‌شویی", "ترمیم"], logo: "پ", rating: "۴.۹" },
+  { name: "قالیشویی فرشینه", description: "جمع‌آوری و تحویل فرش با پوشش مناطق مختلف تهران.", verified: true, ad: false, services: ["قالیشویی", "موکت‌شویی", "مبل‌شویی"], logo: "ف", rating: "۴.۸" },
 ];
 
 const cleaners = [
-  {
-    name: "قالیشویی نوین تهران",
-    description: "خدمات قالیشویی و شست‌وشوی انواع فرش دستباف و ماشینی.",
-    verified: true,
-    ad: false,
-    services: ["قالیشویی", "شست‌وشوی فرش دستباف"],
-    logo: "ن",
-  },
-  {
-    name: "قالیشویی گلستان",
-    description: "پذیرش سفارش در مناطق مرکزی و غرب تهران.",
-    verified: false,
-    ad: false,
-    services: ["قالیشویی", "موکت‌شویی"],
-    logo: "گ",
-  },
-  {
-    name: "قالیشویی ایرانیان",
-    description: "سرویس جمع‌آوری و تحویل با پوشش چند منطقه تهران.",
-    verified: true,
-    ad: false,
-    services: ["قالیشویی", "مبل‌شویی"],
-    logo: "ا",
-  },
+  { name: "قالیشویی نوین تهران", description: "خدمات قالیشویی و شست‌وشوی فرش دستباف و ماشینی.", verified: true, ad: false, services: ["قالیشویی", "فرش دستباف"], logo: "ن", rating: "۴.۷" },
+  { name: "قالیشویی گلستان", description: "پذیرش سفارش در مناطق مرکزی و غرب تهران.", verified: false, ad: false, services: ["قالیشویی", "موکت‌شویی"], logo: "گ", rating: "۴.۶" },
+  { name: "قالیشویی ایرانیان", description: "سرویس جمع‌آوری و تحویل با پوشش چند منطقه تهران.", verified: true, ad: false, services: ["قالیشویی", "مبل‌شویی"], logo: "ا", rating: "۴.۸" },
 ];
 
 const prices = [
-  { title: "فرش ماشینی", unit: "هر مترمربع", price: "از ۴۵٬۰۰۰ تومان" },
-  { title: "فرش دستباف", unit: "هر مترمربع", price: "از ۸۰٬۰۰۰ تومان" },
-  { title: "موکت", unit: "هر مترمربع", price: "از ۳۵٬۰۰۰ تومان" },
-  { title: "مبل‌شویی", unit: "هر دست", price: "از ۷۵۰٬۰۰۰ تومان" },
+  ["فرش ماشینی", "هر مترمربع", "از ۴۵٬۰۰۰ تومان"],
+  ["فرش دستباف", "هر مترمربع", "از ۸۰٬۰۰۰ تومان"],
+  ["موکت", "هر مترمربع", "از ۳۵٬۰۰۰ تومان"],
+  ["مبل‌شویی", "هر دست", "از ۷۵۰٬۰۰۰ تومان"],
 ];
 
 const areas = ["سعادت‌آباد", "شهرک غرب", "پونک", "مرزداران", "ونک", "یوسف‌آباد", "جردن", "گیشا"];
 
 const faqs = [
-  {
-    q: "قیمت قالیشویی در تهران چطور محاسبه می‌شود؟",
-    a: "قیمت معمولاً بر اساس نوع فرش، متراژ، نوع شست‌وشو و خدمات تکمیلی تعیین می‌شود. اعداد این صفحه برای مقایسه اولیه هستند.",
-  },
-  {
-    q: "آیا قالیشویی‌های این صفحه فرش را در محل جمع‌آوری می‌کنند؟",
-    a: "بسیاری از قالیشویی‌ها سرویس جمع‌آوری و تحویل دارند؛ جزئیات هر مجموعه را باید در اطلاعات همان کارت بررسی کنید.",
-  },
-  {
-    q: "چطور یک قالیشویی مناسب انتخاب کنم؟",
-    a: "ابتدا محدوده خدمت‌رسانی، خدمات موردنیاز و اطلاعات تأییدشده را بررسی کنید و سپس برای استعلام قیمت و زمان‌بندی با مجموعه تماس بگیرید.",
-  },
+  ["قیمت قالیشویی در تهران چطور محاسبه می‌شود؟", "قیمت معمولاً بر اساس نوع فرش، متراژ، نوع شست‌وشو و خدمات تکمیلی تعیین می‌شود. مبلغ نهایی را قبل از سفارش استعلام کنید."],
+  ["آیا قالیشویی‌ها جمع‌آوری و تحویل دارند؟", "بسیاری از مجموعه‌ها این سرویس را ارائه می‌کنند؛ جزئیات محدوده و شرایط هر مجموعه در اطلاعات همان کارت مشخص می‌شود."],
+  ["چطور قالیشویی مناسب انتخاب کنم؟", "محدوده خدمت، خدمات موردنیاز، وضعیت تأیید اطلاعات و قیمت را کنار هم بررسی کنید و سپس برای زمان‌بندی تماس بگیرید."],
 ];
 
-const relatedPlaces = ["کرج", "شهریار", "اسلامشهر", "ری", "پردیس"];
-
-function CheckIcon() {
-  return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6" /></svg>;
-}
-
-function ArrowIcon() {
-  return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" /></svg>;
-}
-
-function SearchIcon() {
-  return <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" /><path d="m16 16 4.5 4.5" /></svg>;
-}
-
-function StarIcon() {
-  return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 4 2.5 5.1 5.5.8-4 4 1 5.5-5-2.6-5 2.6 1-5.5-4-4 5.5-.8L12 4Z" /></svg>;
+function Icon({ name }: { name: "arrow" | "search" | "check" | "star" | "map" | "phone" | "chevron" }) {
+  const paths = {
+    arrow: <><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></>,
+    search: <><circle cx="11" cy="11" r="6.5" /><path d="m16 16 4.5 4.5" /></>,
+    check: <path d="m5 12 4 4L19 6" />,
+    star: <path d="m12 3.8 2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8-4.2-4.1 5.8-.8L12 3.8Z" />,
+    map: <><path d="M9 18.5 4 21V6l5-2.5L15 6l5-2.5v15l-5 2.5-6-2.5Z" /><path d="M9 3.5v15M15 6v15" /></>,
+    phone: <path d="M7.4 4.5 10 7l-1.7 2.8c1 2.1 2.5 3.7 4.6 4.7l2.8-1.8 2.5 2.6c.6.6.6 1.6 0 2.2l-1.2 1.2C11.2 19 5 12.8 4.3 6.9l1.2-1.2c.5-.7 1.3-.8 1.9-.2Z" />,
+    chevron: <path d="m8 10 4 4 4-4" />,
+  };
+  return <svg viewBox="0 0 24 24" aria-hidden="true">{paths[name]}</svg>;
 }
 
 function CleanerCard({ cleaner, featured = false }: { cleaner: typeof featuredCleaners[number]; featured?: boolean }) {
   return (
-    <article className={`location-cleaner-card ${featured ? "is-featured" : ""}`}>
-      <div className="location-cleaner-top">
-        <div className="location-cleaner-logo">{cleaner.logo}</div>
-        <div className="location-cleaner-title">
-          <div className="location-cleaner-badges">
-            {cleaner.ad && <span className="location-badge location-badge-ad">پیشنهاد ویژه</span>}
-            {cleaner.verified && <span className="location-badge location-badge-verified"><CheckIcon /> تأیید شده</span>}
+    <article className={`m3-cleaner-card ${featured ? "is-featured" : ""}`}>
+      <div className="m3-cleaner-head">
+        <div className="m3-avatar">{cleaner.logo}</div>
+        <div className="m3-cleaner-title">
+          <div className="m3-badges">
+            {cleaner.ad && <span className="m3-badge m3-badge-primary">پیشنهاد ویژه</span>}
+            {cleaner.verified && <span className="m3-badge m3-badge-success"><Icon name="check" /> تأیید شده</span>}
           </div>
           <h3>{cleaner.name}</h3>
+          <span className="m3-rating"><Icon name="star" /> {cleaner.rating}</span>
         </div>
       </div>
       <p>{cleaner.description}</p>
-      <div className="location-service-tags">
-        {cleaner.services.map((service) => <span key={service}>{service}</span>)}
-      </div>
-      <div className="location-cleaner-actions">
-        <button type="button" className="location-phone-button">نمایش شماره تماس</button>
-        <button type="button" className="location-more-button" aria-label={`مشاهده اطلاعات ${cleaner.name}`}><ArrowIcon /></button>
+      <div className="m3-chip-row">{cleaner.services.map((service) => <span className="m3-chip" key={service}>{service}</span>)}</div>
+      <div className="m3-card-actions">
+        <button type="button" className="m3-filled-button"><Icon name="phone" /> نمایش شماره</button>
+        <button type="button" className="m3-tonal-button">اطلاعات بیشتر <Icon name="arrow" /></button>
       </div>
     </article>
   );
@@ -117,159 +67,93 @@ function CleanerCard({ cleaner, featured = false }: { cleaner: typeof featuredCl
 
 export default function Home() {
   return (
-    <main className="location-page">
+    <main className="m3-page" dir="rtl">
       <SiteHeader />
 
-      <section className="location-hero">
-        <div className="location-hero-glow" />
-        <div className="location-shell">
-          <nav className="location-breadcrumb" aria-label="مسیر صفحه">
-            <a href="/">قالی مپ</a><span>/</span><a href="/ostan-ha">استان تهران</a><span>/</span><strong>تهران</strong>
+      <section className="m3-hero">
+        <div className="m3-hero-orb m3-orb-one" />
+        <div className="m3-hero-orb m3-orb-two" />
+        <div className="m3-shell m3-hero-inner">
+          <nav className="m3-breadcrumb" aria-label="مسیر صفحه">
+            <a href="/">قالی مپ</a><span>›</span><a href="/ostan-ha">استان تهران</a><span>›</span><strong>تهران</strong>
           </nav>
-
-          <div className="location-hero-grid">
-            <div className="location-hero-copy">
-              <span className="location-eyebrow">شهر</span>
+          <div className="m3-hero-layout">
+            <div className="m3-hero-main">
+              <span className="m3-label-large">راهنمای شهر</span>
               <h1>قالیشویی در تهران</h1>
-              <p>فهرست قالیشویی‌های تهران، خدمات، قیمت‌های تقریبی و مناطق تحت پوشش را یکجا بررسی کنید.</p>
-              <div className="location-hero-meta">
-                <span><strong>۲۴+</strong> مجموعه</span>
-                <span><strong>۸</strong> منطقه نمونه</span>
-                <span><strong>به‌روز</strong> اطلاعات</span>
+              <p>قالیشویی‌های تهران را بر اساس محدوده، خدمات، وضعیت تأیید و قیمت تقریبی مقایسه کنید.</p>
+              <div className="m3-hero-stats">
+                <div><strong>۲۴+</strong><span>مجموعه</span></div>
+                <div><strong>۸</strong><span>منطقه نمونه</span></div>
+                <div><strong>۴.۸</strong><span>امتیاز میانگین</span></div>
               </div>
-              <div className="location-hero-actions">
-                <a href="#cleaners" className="location-primary-action">دیدن قالیشویی‌ها <ArrowIcon /></a>
-                <a href="#prices" className="location-secondary-action">مشاهده قیمت‌ها</a>
+              <div className="m3-hero-actions">
+                <a href="#cleaners" className="m3-hero-primary">دیدن قالیشویی‌ها <Icon name="arrow" /></a>
+                <a href="#prices" className="m3-hero-secondary">مشاهده قیمت‌ها</a>
               </div>
             </div>
-
-            <div className="location-quick-card">
-              <div className="location-quick-icon"><SearchIcon /></div>
-              <span>جستجو در این محدوده</span>
-              <strong>قالیشویی نزدیک شما</strong>
-              <p>منطقه یا محله خود را انتخاب کنید تا مسیر دقیق‌تری برای پیدا کردن مجموعه مناسب داشته باشید.</p>
-              <a href="#areas">دیدن مناطق تحت پوشش <ArrowIcon /></a>
-            </div>
+            <aside className="m3-hero-card">
+              <div className="m3-hero-card-icon"><Icon name="map" /></div>
+              <span className="m3-label-medium">محدوده انتخابی</span>
+              <strong>تهران</strong>
+              <p>برای رسیدن به نتیجه دقیق‌تر، محله یا منطقه موردنظر خود را از بخش مناطق انتخاب کنید.</p>
+              <a href="#areas">دیدن مناطق <Icon name="arrow" /></a>
+            </aside>
           </div>
         </div>
       </section>
 
       <LocationAnchorNav />
 
-      <div className="location-shell location-content">
-        <section id="cleaners" className="location-section">
-          <div className="location-section-heading">
-            <div>
-              <span className="location-section-kicker">انتخاب‌های پیشنهادی</span>
-              <h2>قالیشویی‌های تهران</h2>
-              <p>مجموعه‌ها را بر اساس محدوده، خدمات و اطلاعات ثبت‌شده مقایسه کنید.</p>
-            </div>
-            <span className="location-count">۲۴ مجموعه</span>
-          </div>
-
-          <div className="location-cleaner-grid location-featured-grid">
-            {featuredCleaners.map((cleaner) => <CleanerCard key={cleaner.name} cleaner={cleaner} featured />)}
-          </div>
-
-          <div className="location-section-subheading">
-            <h3>سایر قالیشویی‌ها</h3>
-            <span>نتایج بیشتر در این محدوده</span>
-          </div>
-          <div className="location-cleaner-grid">
-            {cleaners.map((cleaner) => <CleanerCard key={cleaner.name} cleaner={cleaner} />)}
-          </div>
+      <div className="m3-shell m3-content">
+        <section id="cleaners" className="m3-section">
+          <header className="m3-section-head">
+            <div><span className="m3-overline">انتخاب‌های پیشنهادی</span><h2>قالیشویی‌های تهران</h2><p>گزینه‌ها را سریع و بدون رفت‌وبرگشت بین صفحات مقایسه کنید.</p></div>
+            <span className="m3-count-pill">۲۴ مجموعه</span>
+          </header>
+          <div className="m3-featured-grid">{featuredCleaners.map((c) => <CleanerCard key={c.name} cleaner={c} featured />)}</div>
+          <div className="m3-subhead"><h3>سایر مجموعه‌ها</h3><span>نتایج بیشتر</span></div>
+          <div className="m3-cleaner-grid">{cleaners.map((c) => <CleanerCard key={c.name} cleaner={c} />)}</div>
         </section>
 
-        <section id="about" className="location-section location-about">
-          <div className="location-about-copy">
-            <span className="location-section-kicker">راهنمای این صفحه</span>
-            <h2>قالیشویی در تهران؛ قبل از انتخاب چه چیزهایی را بررسی کنیم؟</h2>
-            <p>اگر دنبال قالیشویی در تهران هستید، فقط به قیمت توجه نکنید. نوع فرش، کیفیت شست‌وشو، محدوده جمع‌آوری، زمان تحویل و خدمات تکمیلی می‌توانند در انتخاب شما مؤثر باشند.</p>
-            <p>در قالی مپ تلاش کرده‌ایم اطلاعات موردنیاز را در یک صفحه جمع کنیم تا بتوانید قبل از تماس، گزینه‌های موجود در محدوده خود را سریع‌تر مقایسه کنید.</p>
-          </div>
-          <div className="location-about-points">
-            {["بررسی محدوده خدمت‌رسانی", "مقایسه خدمات موردنیاز", "بررسی وضعیت تأیید اطلاعات", "استعلام قیمت پیش از سفارش"].map((item) => (
-              <div key={item}><span><CheckIcon /></span><strong>{item}</strong></div>
-            ))}
-          </div>
-        </section>
-
-        <section id="prices" className="location-section">
-          <div className="location-section-heading">
-            <div>
-              <span className="location-section-kicker">قیمت خدمات</span>
-              <h2>قیمت تقریبی قالیشویی در تهران</h2>
-              <p>برای مقایسه اولیه؛ مبلغ نهایی ممکن است بر اساس شرایط سفارش تغییر کند.</p>
-            </div>
-            <span className="location-price-note">آخرین بروزرسانی: شهریور ۱۴۰۵</span>
-          </div>
-          <div className="location-price-table">
-            {prices.map((item, index) => (
-              <div className="location-price-row" key={item.title}>
-                <span className="location-price-index">۰{index + 1}</span>
-                <strong>{item.title}</strong>
-                <span>{item.unit}</span>
-                <b>{item.price}</b>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section id="areas" className="location-section">
-          <div className="location-section-heading">
-            <div>
-              <span className="location-section-kicker">محدوده خدمت</span>
-              <h2>مناطق و محله‌های تحت پوشش</h2>
-              <p>این فهرست نمونه‌ای از محدوده‌هایی است که در اطلاعات مجموعه‌ها دیده می‌شود.</p>
+        <section id="about" className="m3-section">
+          <div className="m3-info-panel">
+            <div className="m3-info-copy"><span className="m3-overline">راهنمای انتخاب</span><h2>قبل از سفارش، این چهار مورد را بررسی کنید.</h2><p>قیمت تنها معیار انتخاب نیست. محدوده جمع‌آوری، نوع شست‌وشو، زمان تحویل و خدمات تکمیلی می‌توانند تفاوت اصلی بین گزینه‌ها باشند.</p></div>
+            <div className="m3-check-list">
+              {["محدوده خدمت‌رسانی", "خدمات موردنیاز", "تأیید اطلاعات مجموعه", "استعلام قیمت نهایی"].map((item) => <div key={item}><span><Icon name="check" /></span><strong>{item}</strong></div>)}
             </div>
           </div>
-          <div className="location-area-grid">
-            {areas.map((area) => <a href="#" key={area}><span>{area}</span><ArrowIcon /></a>)}
+        </section>
+
+        <section id="prices" className="m3-section">
+          <header className="m3-section-head"><div><span className="m3-overline">قیمت خدمات</span><h2>قیمت تقریبی قالیشویی</h2><p>اعداد برای مقایسه اولیه هستند و با شرایط سفارش تغییر می‌کنند.</p></div><span className="m3-update">به‌روزرسانی شهریور ۱۴۰۵</span></header>
+          <div className="m3-price-card">
+            {prices.map(([title, unit, price], i) => <div className="m3-price-row" key={title}><span className="m3-price-num">۰{i + ۱}</span><div><strong>{title}</strong><span>{unit}</span></div><b>{price}</b></div>)}
           </div>
         </section>
 
-        <section id="faq" className="location-section">
-          <div className="location-section-heading">
-            <div>
-              <span className="location-section-kicker">پرسش‌های پرتکرار</span>
-              <h2>سوالات متداول درباره قالیشویی تهران</h2>
-            </div>
-          </div>
-          <div className="location-faq-list">
-            {faqs.map((faq) => (
-              <details key={faq.q}>
-                <summary><span>{faq.q}</span><b>+</b></summary>
-                <p>{faq.a}</p>
-              </details>
-            ))}
+        <section id="areas" className="m3-section">
+          <header className="m3-section-head"><div><span className="m3-overline">محدوده خدمت</span><h2>مناطق و محله‌های تهران</h2><p>یک محله را انتخاب کنید تا مسیر جست‌وجو کوتاه‌تر شود.</p></div></header>
+          <div className="m3-area-grid">{areas.map((area) => <a href="#" key={area}><span>{area}</span><Icon name="arrow" /></a>)}</div>
+        </section>
+
+        <section id="faq" className="m3-section">
+          <header className="m3-section-head"><div><span className="m3-overline">پرسش‌های پرتکرار</span><h2>سوالات متداول</h2><p>پاسخ کوتاه به پرسش‌هایی که قبل از تماس بیشتر مطرح می‌شوند.</p></div></header>
+          <div className="m3-faq-list">{faqs.map(([q, a]) => <details key={q}><summary><span>{q}</span><span className="m3-faq-icon">+</span></summary><p>{a}</p></details>)}</div>
+        </section>
+
+        <section id="reviews" className="m3-section">
+          <div className="m3-review-layout">
+            <div className="m3-review-summary"><span className="m3-overline">تجربه کاربران</span><h2>انتخاب مطمئن‌تر با تجربه دیگران.</h2><div className="m3-big-rating"><strong>۴.۸</strong><span><Icon name="star" /><Icon name="star" /><Icon name="star" /><Icon name="star" /><Icon name="star" /></span></div><p>این امتیاز در نسخه نهایی از داده‌های واقعی کاربران تغذیه خواهد شد.</p></div>
+            <article className="m3-review-card"><div><strong>مریم · تهران</strong><span>۲ روز پیش</span></div><span className="m3-review-stars"><Icon name="star" /><Icon name="star" /><Icon name="star" /><Icon name="star" /><Icon name="star" /></span><p>مقایسه محدوده و خدمات قبل از تماس خیلی کمک می‌کند، مخصوصاً وقتی چند گزینه در یک محله دارید.</p></article>
           </div>
         </section>
 
-        <section id="reviews" className="location-section location-reviews">
-          <div className="location-review-summary">
-            <span className="location-section-kicker">تجربه کاربران</span>
-            <h2>قبل از تماس، تجربه دیگران را هم ببینید.</h2>
-            <div className="location-rating"><strong>۴.۸</strong><span><StarIcon /><StarIcon /><StarIcon /><StarIcon /><StarIcon /></span></div>
-            <p>امتیاز نمایشی برای طراحی رابط است و در نسخه واقعی از داده‌های ثبت‌شده کاربران تغذیه می‌شود.</p>
-          </div>
-          <div className="location-review-card">
-            <div className="location-review-card-top"><strong>مریم · تهران</strong><span>۲ روز پیش</span></div>
-            <div className="location-review-stars"><StarIcon /><StarIcon /><StarIcon /><StarIcon /><StarIcon /></div>
-            <p>مقایسه محدوده و خدمات قبل از تماس خیلی کمک می‌کند. مخصوصاً وقتی چند گزینه در یک محله دارید.</p>
-          </div>
-        </section>
-
-        <section className="location-related">
-          <div>
-            <span className="location-section-kicker">مسیرهای مرتبط</span>
-            <h2>شهرهای نزدیک</h2>
-          </div>
-          <div className="location-related-list">
-            {relatedPlaces.map((place) => <a href="#" key={place}>{place}<ArrowIcon /></a>)}
-          </div>
+        <section className="m3-related">
+          <div><span className="m3-overline">مسیرهای مرتبط</span><h2>شهرهای نزدیک</h2></div>
+          <div className="m3-related-list">{["کرج", "شهریار", "اسلامشهر", "ری", "پردیس"].map((place) => <a href="#" key={place}><span>قالیشویی در {place}</span><Icon name="arrow" /></a>)}</div>
         </section>
       </div>
-
       <SiteFooter />
     </main>
   );
