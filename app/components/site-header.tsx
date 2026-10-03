@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 
 const navItems = [
   { label: "استان‌ها", href: "/ostan-ha" },
@@ -25,19 +25,42 @@ function CloseIcon() {
   );
 }
 
-function MenuIcon({ open }: { open: boolean }) {
-  return open ? <CloseIcon /> : <><span /><span /><span /></>;
+function MenuIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M4 7h16M4 12h16M4 17h16" />
+    </svg>
+  );
 }
 
 export default function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    document.body.classList.toggle("header-drawer-open", menuOpen);
+    document.body.classList.toggle("header-drawer-open", menuOpen || searchOpen);
     return () => document.body.classList.remove("header-drawer-open");
-  }, [menuOpen]);
+  }, [menuOpen, searchOpen]);
+
+  useEffect(() => {
+    if (searchOpen) {
+      const timer = window.setTimeout(() => searchInputRef.current?.focus(), 80);
+      return () => window.clearTimeout(timer);
+    }
+  }, [searchOpen]);
+
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setSearchOpen(false);
+        setMenuOpen(false);
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   function submitSearch(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -48,7 +71,7 @@ export default function SiteHeader() {
     window.location.href = `/search?q=${encodeURIComponent(value)}`;
   }
 
-  function closeAll() {
+  function closeOverlays() {
     setSearchOpen(false);
     setMenuOpen(false);
   }
@@ -56,14 +79,9 @@ export default function SiteHeader() {
   return (
     <header className="site-header-wrap" dir="rtl">
       <div className="site-header">
-        <a
-          className="site-logo"
-          href="/"
-          aria-label="قالی مپ؛ راهنمای قالیشویی و خدمات شست‌وشوی فرش"
-          onClick={closeAll}
-        >
+        <a className="site-logo" href="/" onClick={closeOverlays} aria-label="قالی مپ">
           <span className="site-logo-mark" aria-hidden="true">ق</span>
-          <span className="site-logo-text">
+          <span className="site-logo-copy">
             <strong>قالی مپ</strong>
             <small>راهنمای قالیشویی</small>
           </span>
@@ -77,11 +95,13 @@ export default function SiteHeader() {
 
         <div className="site-header-actions">
           <button
-            type="button"
             className={`site-search-trigger ${searchOpen ? "is-active" : ""}`}
-            aria-label="باز کردن جستجو"
+            type="button"
+            onClick={() => {
+              setMenuOpen(false);
+              setSearchOpen((value) => !value);
+            }}
             aria-expanded={searchOpen}
-            onClick={() => setSearchOpen((value) => !value)}
           >
             <SearchIcon />
             <span>جستجو</span>
@@ -91,10 +111,9 @@ export default function SiteHeader() {
 
         <div className="site-mobile-actions">
           <button
+            className="site-icon-button"
             type="button"
-            className="site-mobile-search-trigger"
             aria-label="جستجو"
-            aria-expanded={searchOpen}
             onClick={() => {
               setMenuOpen(false);
               setSearchOpen(true);
@@ -103,8 +122,8 @@ export default function SiteHeader() {
             <SearchIcon />
           </button>
           <button
+            className={`site-icon-button site-menu-button ${menuOpen ? "is-open" : ""}`}
             type="button"
-            className={`site-menu-toggle ${menuOpen ? "is-open" : ""}`}
             aria-label={menuOpen ? "بستن منو" : "باز کردن منو"}
             aria-expanded={menuOpen}
             onClick={() => {
@@ -112,59 +131,57 @@ export default function SiteHeader() {
               setMenuOpen((value) => !value);
             }}
           >
-            <MenuIcon open={menuOpen} />
+            {menuOpen ? <CloseIcon /> : <MenuIcon />}
           </button>
         </div>
       </div>
 
-      {searchOpen && (
-        <>
-          <button className="site-search-backdrop" type="button" aria-label="بستن جستجو" onClick={() => setSearchOpen(false)} />
-          <div className="site-search-panel" role="dialog" aria-modal="true" aria-label="جستجوی قالی مپ">
-            <div className="site-search-heading">
-              <div>
-                <strong>کجا دنبال قالیشویی می‌گردید؟</strong>
-                <span>شهر، منطقه یا محله را جستجو کنید.</span>
-              </div>
-              <button type="button" aria-label="بستن جستجو" onClick={() => setSearchOpen(false)}>
-                <CloseIcon />
-              </button>
-            </div>
-            <form role="search" onSubmit={submitSearch}>
-              <div className="site-search-box">
-                <SearchIcon />
-                <input
-                  id="site-search-input"
-                  name="q"
-                  type="search"
-                  value={query}
-                  onChange={(event) => setQuery(event.target.value)}
-                  placeholder="مثلاً تهران، سعادت‌آباد یا شیراز"
-                  autoComplete="off"
-                  autoFocus
-                />
-                <button type="submit">جستجو</button>
-              </div>
-            </form>
-            <div className="site-search-hint">مثال: تهران، کرج، سعادت‌آباد، شیراز</div>
-          </div>
-        </>
-      )}
-
       <button
-        className={`site-drawer-backdrop ${menuOpen ? "is-visible" : ""}`}
+        className={`site-overlay ${searchOpen || menuOpen ? "is-visible" : ""}`}
         type="button"
-        aria-label="بستن منو"
-        onClick={() => setMenuOpen(false)}
+        aria-label="بستن"
+        onClick={closeOverlays}
       />
 
-      <aside className={`site-mobile-drawer ${menuOpen ? "is-open" : ""}`} aria-label="منوی موبایل" aria-hidden={!menuOpen}>
-        <div className="site-drawer-head">
+      <section className={`site-search-popover ${searchOpen ? "is-open" : ""}`} aria-hidden={!searchOpen}>
+        <div className="site-search-top">
+          <div>
+            <span className="site-search-kicker">جستجوی سریع</span>
+            <strong>شهر یا منطقه را پیدا کنید</strong>
+          </div>
+          <button className="site-close-button" type="button" aria-label="بستن جستجو" onClick={() => setSearchOpen(false)}>
+            <CloseIcon />
+          </button>
+        </div>
+        <form className="site-search-form" role="search" onSubmit={submitSearch}>
+          <SearchIcon />
+          <input
+            ref={searchInputRef}
+            name="q"
+            type="search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="مثلاً تهران، سعادت‌آباد یا شیراز"
+            autoComplete="off"
+          />
+          <button type="submit">جستجو</button>
+        </form>
+        <div className="site-search-suggestions">
+          <span>پیشنهاد:</span>
+          <button type="button" onClick={() => setQuery("تهران")}>تهران</button>
+          <button type="button" onClick={() => setQuery("کرج")}>کرج</button>
+          <button type="button" onClick={() => setQuery("شیراز")}>شیراز</button>
+        </div>
+      </section>
+
+      <aside className={`site-mobile-drawer ${menuOpen ? "is-open" : ""}`} aria-hidden={!menuOpen}>
+        <div className="site-drawer-brand">
+          <span className="site-logo-mark" aria-hidden="true">ق</span>
           <div>
             <strong>منوی قالی مپ</strong>
             <span>انتخاب مسیر موردنظر</span>
           </div>
-          <button type="button" aria-label="بستن منو" onClick={() => setMenuOpen(false)}>
+          <button className="site-close-button" type="button" aria-label="بستن منو" onClick={() => setMenuOpen(false)}>
             <CloseIcon />
           </button>
         </div>
@@ -179,23 +196,23 @@ export default function SiteHeader() {
             placeholder="جستجوی شهر یا منطقه"
             autoComplete="off"
           />
-          <button type="submit" aria-label="جستجو">برو</button>
+          <button type="submit">برو</button>
         </form>
 
-        <nav aria-label="ناوبری موبایل">
+        <nav className="site-drawer-nav" aria-label="ناوبری موبایل">
           {navItems.map((item, index) => (
             <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)}>
-              <span className="site-drawer-index">۰{index + 1}</span>
-              <span>{item.label}</span>
+              <span className="site-drawer-number">0{index + 1}</span>
+              <span className="site-drawer-label">{item.label}</span>
               <span className="site-drawer-arrow" aria-hidden="true">←</span>
             </a>
           ))}
         </nav>
 
-        <a className="site-drawer-cta" href="/ostan-ha" onClick={() => setMenuOpen(false)}>
-          <span>پیدا کردن قالیشویی</span>
-          <span aria-hidden="true">←</span>
-        </a>
+        <div className="site-drawer-footer">
+          <span>دنبال قالیشویی مطمئن هستید؟</span>
+          <a href="/ostan-ha" onClick={() => setMenuOpen(false)}>پیدا کردن قالیشویی <span aria-hidden="true">←</span></a>
+        </div>
       </aside>
     </header>
   );
