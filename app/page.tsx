@@ -1,5 +1,6 @@
 import SiteHeader from "./components/site-header";
 import SiteFooter from "./components/site-footer";
+import LocationAnchorNav from "./components/location-anchor-nav";
 
 const featuredCleaners = [
   {
@@ -153,16 +154,7 @@ export default function Home() {
         </div>
       </section>
 
-      <nav className="location-anchor-nav" aria-label="دسترسی سریع">
-        <div className="location-shell location-anchor-inner">
-          <a href="#cleaners">قالیشویی‌ها</a>
-          <a href="#about">درباره این محدوده</a>
-          <a href="#prices">قیمت‌ها</a>
-          <a href="#areas">مناطق</a>
-          <a href="#faq">سوالات متداول</a>
-          <a href="#reviews">تجربه کاربران</a>
-        </div>
-      </nav>
+      <LocationAnchorNav />
 
       <div className="location-shell location-content">
         <section id="cleaners" className="location-section">
