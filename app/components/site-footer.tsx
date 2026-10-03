@@ -23,7 +23,7 @@ const footerGroups = [
 function ArrowIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M6 12h12M13 6l6 6-6 6" />
+      <path d="M18 12H6M11 6l-6 6 6 6" />
     </svg>
   );
 }
@@ -58,19 +58,10 @@ export default function SiteFooter() {
               <small>راهنمای قالیشویی</small>
             </span>
           </Link>
-
-          <p>
-            راهی ساده برای پیدا کردن قالیشویی، بررسی خدمات و مقایسه
-            اطلاعات موردنیاز در شهر و منطقه شما.
-          </p>
-
+          <p>راهنمای ساده و قابل اعتماد برای پیدا کردن قالیشویی در شهر و منطقه شما.</p>
           <div className="site-footer-socials" aria-label="شبکه‌های اجتماعی">
-            <a href="#" aria-label="اینستاگرام قالی مپ">
-              <InstagramIcon />
-            </a>
-            <a href="#" aria-label="تلگرام قالی مپ">
-              <TelegramIcon />
-            </a>
+            <a href="#" aria-label="اینستاگرام قالی مپ"><InstagramIcon /></a>
+            <a href="#" aria-label="تلگرام قالی مپ"><TelegramIcon /></a>
           </div>
         </div>
 
@@ -91,12 +82,9 @@ export default function SiteFooter() {
         </div>
 
         <div className="site-footer-contact">
-          <span className="site-footer-eyebrow">قالی‌مپ</span>
-          <h2>دنبال قالیشویی مناسب هستید؟</h2>
-          <p>
-            از استان شروع کنید، شهر و منطقه را انتخاب کنید و گزینه‌های
-            موجود را بررسی کنید.
-          </p>
+          <span className="site-footer-eyebrow">شروع از همین‌جا</span>
+          <h2>قالیشویی مناسب خودت را پیدا کن.</h2>
+          <p>استان را انتخاب کن، بعد شهر و منطقه را ببین و گزینه‌های موجود را مقایسه کن.</p>
           <Link className="site-footer-action" href="/ostan-ha">
             <span>پیدا کردن قالیشویی</span>
             <ArrowIcon />
