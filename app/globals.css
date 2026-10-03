@@ -1352,3 +1352,181 @@ body.header-drawer-open { overflow: hidden; }
     -webkit-backdrop-filter: blur(17px) saturate(120%);
   }
 }
+
+
+/* Material 3 inspired frosted surfaces + active section indicator */
+.site-header {
+  border-color: rgba(255,255,255,.72);
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.70), rgba(255,255,255,.52)),
+    rgba(255,255,255,.48);
+  box-shadow:
+    0 20px 52px rgba(21,94,117,.13),
+    0 1px 0 rgba(255,255,255,.86) inset,
+    0 -1px 0 rgba(21,94,117,.035) inset;
+  backdrop-filter: blur(30px) saturate(145%);
+  -webkit-backdrop-filter: blur(30px) saturate(145%);
+}
+
+.site-header::before {
+  background:
+    linear-gradient(120deg, rgba(255,255,255,.30), rgba(255,255,255,.06) 52%, rgba(22,166,161,.045));
+}
+
+.location-anchor-nav {
+  top: 102px;
+  border-color: rgba(255,255,255,.72);
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.70), rgba(255,255,255,.52)),
+    rgba(255,255,255,.48);
+  box-shadow:
+    0 16px 42px rgba(21,94,117,.11),
+    0 1px 0 rgba(255,255,255,.86) inset,
+    0 -1px 0 rgba(21,94,117,.03) inset;
+  backdrop-filter: blur(30px) saturate(145%);
+  -webkit-backdrop-filter: blur(30px) saturate(145%);
+}
+
+.location-anchor-inner {
+  position: relative;
+  min-height: 58px;
+  gap: 2px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.location-anchor-inner::-webkit-scrollbar { display: none; }
+
+.location-anchor-inner button {
+  position: relative;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  padding: 0 15px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: 10.5px;
+  font-weight: 800;
+  white-space: nowrap;
+  transition:
+    color 180ms ease,
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.location-anchor-inner button::after {
+  content: "";
+  position: absolute;
+  right: 15px;
+  left: 15px;
+  bottom: 4px;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 240ms cubic-bezier(.22,.8,.2,1);
+}
+
+.location-anchor-inner button:hover {
+  color: var(--primary);
+  background: rgba(233,242,241,.48);
+}
+
+.location-anchor-inner button.is-active {
+  color: var(--primary);
+  background: rgba(233,242,241,.58);
+}
+
+.location-anchor-inner button.is-active::after {
+  transform: scaleX(1);
+}
+
+.location-anchor-inner button:focus-visible {
+  outline: 2px solid rgba(22,166,161,.35);
+  outline-offset: 2px;
+}
+
+.location-section {
+  scroll-margin-top: 132px;
+}
+
+@media (max-width: 900px) {
+  .site-header {
+    border-color: rgba(255,255,255,.76);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.73), rgba(255,255,255,.55)),
+      rgba(255,255,255,.50);
+    backdrop-filter: blur(28px) saturate(140%);
+    -webkit-backdrop-filter: blur(28px) saturate(140%);
+  }
+
+  .location-anchor-nav {
+    top: 84px;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.73), rgba(255,255,255,.55)),
+      rgba(255,255,255,.50);
+    backdrop-filter: blur(28px) saturate(140%);
+    -webkit-backdrop-filter: blur(28px) saturate(140%);
+  }
+
+  .location-anchor-inner {
+    min-height: 52px;
+    padding-inline: 7px;
+  }
+
+  .location-anchor-inner button {
+    min-height: 40px;
+    padding-inline: 12px;
+  }
+
+  .location-section {
+    scroll-margin-top: 112px;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.76), rgba(255,255,255,.58)),
+      rgba(255,255,255,.52);
+    backdrop-filter: blur(27px) saturate(138%);
+    -webkit-backdrop-filter: blur(27px) saturate(138%);
+  }
+
+  .location-anchor-nav {
+    top: 76px;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.76), rgba(255,255,255,.58)),
+      rgba(255,255,255,.52);
+    backdrop-filter: blur(27px) saturate(138%);
+    -webkit-backdrop-filter: blur(27px) saturate(138%);
+  }
+
+  .location-anchor-inner {
+    min-height: 50px;
+    padding-inline: 6px;
+  }
+
+  .location-anchor-inner button {
+    min-height: 38px;
+    padding-inline: 11px;
+    font-size: 9.5px;
+  }
+
+  .location-anchor-inner button::after {
+    right: 11px;
+    left: 11px;
+    bottom: 3px;
+  }
+
+  .location-section {
+    scroll-margin-top: 104px;
+  }
+}
