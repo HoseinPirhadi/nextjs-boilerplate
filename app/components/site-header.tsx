@@ -71,6 +71,16 @@ export default function SiteHeader() {
 
         <button
           type="button"
+          className="site-mobile-search-trigger"
+          aria-label="جستجوی شهر، منطقه یا محله"
+          aria-expanded={searchOpen}
+          onClick={() => setSearchOpen((value) => !value)}
+        >
+          <SearchIcon />
+        </button>
+
+        <button
+          type="button"
           className="site-menu-toggle"
           aria-label={open ? "بستن منو" : "باز کردن منو"}
           aria-expanded={open}
