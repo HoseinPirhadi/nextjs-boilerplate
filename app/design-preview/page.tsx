@@ -5,9 +5,9 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./page.module.css";
 
 const cleaners = [
-  { name: "پاک‌نگار", area: "سعادت‌آباد", rating: "۴.۹", status: "تأییدشده", note: "پیشنهاد قالی مپ" },
-  { name: "فرشینه", area: "شهرک غرب", rating: "۴.۸", status: "تأییدشده", note: "پاسخ‌گویی سریع" },
-  { name: "نوین تهران", area: "پونک", rating: "۴.۷", status: "", note: "انتخاب اقتصادی" },
+  { name: "پاک‌نگار", area: "سعادت‌آباد", rating: "۴.۹", status: "تأییدشده", note: "پیشنهاد قالی مپ", services: ["فرش", "موکت", "مبل"] },
+  { name: "فرشینه", area: "شهرک غرب", rating: "۴.۸", status: "تأییدشده", note: "پاسخ‌گویی سریع", services: ["فرش", "دستباف", "موکت"] },
+  { name: "نوین تهران", area: "پونک", rating: "۴.۷", status: "", note: "انتخاب اقتصادی", services: ["فرش", "موکت"] },
 ];
 
 const prices = [
@@ -47,9 +47,7 @@ export default function DesignPreviewPage() {
           </Link>
 
           <nav className={styles.desktopNav} aria-label="ناوبری اصلی">
-            <a href="#cleaners">قالیشویی‌ها</a>
-            <a href="#prices">قیمت‌ها</a>
-            <a href="#guide">راهنمای انتخاب</a>
+            <a href="#cleaners">قالیشویی‌ها</a><a href="#prices">قیمت‌ها</a><a href="#guide">راهنمای انتخاب</a>
           </nav>
 
           <div className={styles.headerTools}>
@@ -98,8 +96,7 @@ export default function DesignPreviewPage() {
         </div>
 
         <aside className={styles.locationCard}>
-          <div className={styles.locationIcon}><Icon name="pin" /></div>
-          <span className={styles.cardLabel}>محدوده انتخاب‌شده</span>
+          <div className={styles.locationHeader}><div className={styles.locationIcon}><Icon name="pin" /></div><span className={styles.cardLabel}>محدوده انتخاب‌شده</span></div>
           <h2>تهران، تهران</h2>
           <p>برای نتیجه دقیق‌تر، محله خودت را انتخاب کن.</p>
           <button type="button" className={styles.selectButton}><span>انتخاب محله</span><Icon name="chevron" /></button>
@@ -108,12 +105,7 @@ export default function DesignPreviewPage() {
       </section>
 
       <nav className={styles.sectionNav} aria-label="دسترسی سریع">
-        <a className={styles.selected} href="#cleaners">قالیشویی‌ها</a>
-        <a href="#guide">راهنمای انتخاب</a>
-        <a href="#prices">قیمت‌ها</a>
-        <a href="#areas">مناطق</a>
-        <a href="#faq">سوالات</a>
-        <a href="#reviews">تجربه کاربران</a>
+        <a className={styles.selected} href="#cleaners">قالیشویی‌ها</a><a href="#guide">راهنمای انتخاب</a><a href="#prices">قیمت‌ها</a><a href="#areas">مناطق</a><a href="#faq">سوالات</a><a href="#reviews">تجربه کاربران</a>
       </nav>
 
       <section id="cleaners" className={styles.contentSection}>
@@ -135,6 +127,7 @@ export default function DesignPreviewPage() {
                 <span>{cleaner.note}</span>
               </div>
               <p>شست‌وشوی فرش و موکت با دریافت و تحویل در محدوده.</p>
+              <div className={styles.serviceChips}>{cleaner.services.map((service) => <span key={service}>{service}</span>)}</div>
               <a href="#contact" className={styles.cardLink}>مشاهده جزئیات <Icon name="chevron" /></a>
             </article>
           ))}
@@ -142,52 +135,27 @@ export default function DesignPreviewPage() {
       </section>
 
       <section id="guide" className={styles.guideSection}>
-        <div className={styles.guideIntro}>
-          <span className={styles.eyebrow}>راهنمای انتخاب</span>
-          <h2>انتخاب خوب، از سه سؤال ساده شروع می‌شود.</h2>
-          <p>قبل از تماس، این سه مورد را بررسی کن تا گزینه‌ای متناسب با نیازت پیدا کنی.</p>
-        </div>
+        <div className={styles.guideIntro}><span className={styles.eyebrow}>راهنمای انتخاب</span><h2>انتخاب خوب، از سه سؤال ساده شروع می‌شود.</h2><p>قبل از تماس، این سه مورد را بررسی کن تا گزینه‌ای متناسب با نیازت پیدا کنی.</p></div>
         <div className={styles.guideList}>
           {["پوشش منطقه", "نوع شست‌وشو", "دریافت و تحویل"].map((item, index) => (
-            <article key={item}>
-              <span>{fa(index + 1)}</span>
-              <div><h3>{item}</h3><p>{index === 0 ? "محدوده سرویس‌دهی را با محله خودت تطبیق بده." : index === 1 ? "خدمات موردنیازت را قبل از سفارش مشخص کن." : "زمان و شرایط دریافت و تحویل را از قبل بپرس."}</p></div>
-            </article>
+            <article key={item}><span>{fa(index + 1)}</span><div><h3>{item}</h3><p>{index === 0 ? "محدوده سرویس‌دهی را با محله خودت تطبیق بده." : index === 1 ? "خدمات موردنیازت را قبل از سفارش مشخص کن." : "زمان و شرایط دریافت و تحویل را از قبل بپرس."}</p></div></article>
           ))}
         </div>
       </section>
 
       <section id="prices" className={styles.contentSection}>
-        <div className={styles.sectionTitle}>
-          <div><span className={styles.eyebrow}>قیمت خدمات</span><h2>حدود قیمت در تهران</h2></div>
-          <span className={styles.updateNote}>به‌روزشده امروز</span>
-        </div>
-        <div className={styles.priceList}>
-          {prices.map((price, index) => (
-            <a href="#contact" key={price[0]} className={styles.priceRow}>
-              <span>{fa(index + 1)}</span><strong>{price[0]}</strong><em>{price[1]}</em><Icon name="chevron" />
-            </a>
-          ))}
-        </div>
+        <div className={styles.sectionTitle}><div><span className={styles.eyebrow}>قیمت خدمات</span><h2>حدود قیمت در تهران</h2></div><span className={styles.updateNote}>به‌روزشده امروز</span></div>
+        <div className={styles.priceList}>{prices.map((price, index) => <a href="#contact" key={price[0]} className={styles.priceRow}><span>{fa(index + 1)}</span><strong>{price[0]}</strong><em>{price[1]}</em><Icon name="chevron" /></a>)}</div>
       </section>
 
       <section id="areas" className={styles.contentSection}>
         <div className={styles.sectionTitle}><div><span className={styles.eyebrow}>پوشش محلی</span><h2>مناطق تحت پوشش</h2></div></div>
-        <div className={styles.areaGrid}>
-          {areas.map((area, index) => <a href="#cleaners" key={area}><span>{fa(index + 1)}</span><strong>{area}</strong><Icon name="chevron" /></a>)}
-        </div>
+        <div className={styles.areaGrid}>{areas.map((area, index) => <a href="#cleaners" key={area}><span>{fa(index + 1)}</span><strong>{area}</strong><Icon name="chevron" /></a>)}</div>
       </section>
 
       <section id="faq" className={styles.faqSection}>
         <div className={styles.faqIntro}><span className={styles.eyebrow}>پرسش‌های پرتکرار</span><h2>قبل از سفارش بدان</h2><p>پاسخ کوتاه به سؤال‌هایی که بیشتر پرسیده می‌شوند.</p></div>
-        <div className={styles.faqList}>
-          {["قیمت قالیشویی چطور محاسبه می‌شود؟", "دریافت و تحویل فرش چطور انجام می‌شود؟", "چطور بین چند قالیشویی انتخاب کنم؟"].map((question, index) => (
-            <details key={question} open={index === 0}>
-              <summary><span>{question}</span><b>+</b></summary>
-              <p>قیمت به نوع فرش، متراژ، نوع شست‌وشو و شرایط سرویس بستگی دارد. قیمت نهایی را قبل از سفارش از قالیشویی بپرس.</p>
-            </details>
-          ))}
-        </div>
+        <div className={styles.faqList}>{["قیمت قالیشویی چطور محاسبه می‌شود؟", "دریافت و تحویل فرش چطور انجام می‌شود؟", "چطور بین چند قالیشویی انتخاب کنم؟"].map((question, index) => <details key={question} open={index === 0}><summary><span>{question}</span><b>+</b></summary><p>قیمت به نوع فرش، متراژ، نوع شست‌وشو و شرایط سرویس بستگی دارد. قیمت نهایی را قبل از سفارش از قالیشویی بپرس.</p></details>)}</div>
       </section>
 
       <section id="reviews" className={styles.reviewSection}>
