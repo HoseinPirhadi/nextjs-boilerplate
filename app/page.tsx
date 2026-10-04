@@ -44,7 +44,7 @@ function Icon({ name }: { name: "arrow" | "search" | "check" | "star" | "map" | 
 function CleanerCard({ cleaner, featured = false }: { cleaner: typeof featuredCleaners[number]; featured?: boolean }) {
   return (
     <article className={`m3-cleaner-card ${featured ? "is-featured" : ""}`}>
-      <div className="m3-cleaner-head">
+      <header className="m3-cleaner-head">
         <div className="m3-avatar" aria-hidden="true">{cleaner.logo}</div>
         <div className="m3-cleaner-title">
           <div className="m3-badges">
@@ -53,27 +53,29 @@ function CleanerCard({ cleaner, featured = false }: { cleaner: typeof featuredCl
           </div>
           <h3>{cleaner.name}</h3>
         </div>
-      </div>
+      </header>
 
-      <p className="m3-cleaner-description">{cleaner.description}</p>
+      <div className="m3-cleaner-body">
+        <p className="m3-cleaner-description">{cleaner.description}</p>
 
-      <div className="m3-cleaner-services" aria-label="خدمات">
-        <span className="m3-field-label">خدمات</span>
-        <div className="m3-chip-row">
-          {cleaner.services.map((service) => <span className="m3-chip" key={service}>{service}</span>)}
+        <section className="m3-cleaner-services">
+          <span className="m3-field-label">خدمات</span>
+          <div className="m3-chip-row">
+            {cleaner.services.map((service) => <span className="m3-chip" key={service}>{service}</span>)}
+          </div>
+        </section>
+
+        <div className="m3-cleaner-contact-row" aria-label="راه‌های ارتباطی">
+          <span className="m3-contact-item"><span className="m3-contact-dot">ب</span><span>بله</span></span>
+          <span className="m3-contact-item"><span className="m3-contact-dot">◎</span><span>اینستاگرام</span></span>
+          <span className="m3-contact-item"><span className="m3-contact-dot">ت</span><span>تلگرام</span></span>
+          <span className="m3-contact-item"><Icon name="phone" /><span>تلفن ثابت</span></span>
         </div>
       </div>
 
-      <div className="m3-cleaner-contact-row" aria-label="راه‌های ارتباطی">
-        <span className="m3-contact-item"><span className="m3-contact-dot">ب</span> بله</span>
-        <span className="m3-contact-item"><span className="m3-contact-dot">◎</span> اینستاگرام</span>
-        <span className="m3-contact-item"><span className="m3-contact-dot">ت</span> تلگرام</span>
-        <span className="m3-contact-item"><Icon name="phone" /> تلفن ثابت</span>
-      </div>
-
-      <div className="m3-card-actions">
+      <footer className="m3-card-actions">
         <button type="button" className="m3-filled-button"><Icon name="phone" /> نمایش شماره</button>
-      </div>
+      </footer>
     </article>
   );
 }
