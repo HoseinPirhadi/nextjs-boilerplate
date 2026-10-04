@@ -48,15 +48,18 @@ function CleanerCard({ cleaner, featured = false }: { cleaner: typeof featuredCl
               <h3>{cleaner.name}</h3>
               {cleaner.verified && <span className="m3-verified"><Icon name="check" /> تأیید شده</span>}
             </div>
-            {cleaner.ad && <span className="m3-featured-label">پیشنهاد ویژه</span>}
+            <div className="m3-cleaner-meta">
+              {cleaner.ad && <span className="m3-featured-label">پیشنهاد ویژه</span>}
+              {cleaner.verified && <span className="m3-verified"><Icon name="check" /> تأیید شده</span>}
+            </div>
           </div>
         </div>
         <div className="m3-cleaner-summary">
           <p className="m3-cleaner-description">{cleaner.description}</p>
-          <section className="m3-cleaner-services">
-            <span className="m3-field-label">خدمات قابل ارائه</span>
+          <div className="m3-services-line">
+            <span className="m3-field-label">خدمات</span>
             <div className="m3-chip-row">{cleaner.services.map((service) => <span className="m3-chip" key={service}>{service}</span>)}</div>
-          </section>
+          </div>
         </div>
       </div>
       <div className="m3-cleaner-footer">
