@@ -40,22 +40,24 @@ function Icon({ name }: { name: "arrow" | "search" | "check" | "star" | "map" | 
 function CleanerCard({ cleaner, featured = false }: { cleaner: typeof featuredCleaners[number]; featured?: boolean }) {
   return (
     <article className={`m3-cleaner-card ${featured ? "is-featured" : ""}`}>
-      <div className="m3-cleaner-top">
-        <div className="m3-avatar" aria-hidden="true">{cleaner.logo}</div>
-        <div className="m3-cleaner-title">
-          <div className="m3-cleaner-name-row">
-            <h3>{cleaner.name}</h3>
-            {cleaner.verified && <span className="m3-verified"><Icon name="check" /> تأیید شده</span>}
+      <div className="m3-cleaner-main">
+        <div className="m3-cleaner-identity">
+          <div className="m3-avatar" aria-hidden="true">{cleaner.logo}</div>
+          <div className="m3-cleaner-title">
+            <div className="m3-cleaner-name-row">
+              <h3>{cleaner.name}</h3>
+              {cleaner.verified && <span className="m3-verified"><Icon name="check" /> تأیید شده</span>}
+            </div>
+            {cleaner.ad && <span className="m3-featured-label">پیشنهاد ویژه</span>}
           </div>
-          {cleaner.ad && <span className="m3-featured-label">پیشنهاد ویژه</span>}
         </div>
-      </div>
-      <div className="m3-cleaner-content">
-        <p className="m3-cleaner-description">{cleaner.description}</p>
-        <section className="m3-cleaner-services">
-          <span className="m3-field-label">خدمات قابل ارائه</span>
-          <div className="m3-chip-row">{cleaner.services.map((service) => <span className="m3-chip" key={service}>{service}</span>)}</div>
-        </section>
+        <div className="m3-cleaner-summary">
+          <p className="m3-cleaner-description">{cleaner.description}</p>
+          <section className="m3-cleaner-services">
+            <span className="m3-field-label">خدمات قابل ارائه</span>
+            <div className="m3-chip-row">{cleaner.services.map((service) => <span className="m3-chip" key={service}>{service}</span>)}</div>
+          </section>
+        </div>
       </div>
       <div className="m3-cleaner-footer">
         <div className="m3-contact-row" aria-label="راه‌های ارتباطی">
