@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import styles from "./page.module.css";
 
 const cleaners = [
@@ -27,6 +30,13 @@ function Icon({ name }: { name: "search" | "chevron" | "pin" | "check" | "arrow"
 const fa = (n: number) => n.toLocaleString("fa-IR", { useGrouping: false });
 
 export default function DesignPreviewPage() {
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
+  useEffect(() => { if (searchOpen) inputRef.current?.focus(); }, [searchOpen]);
+  useEffect(() => { document.body.style.overflow = (searchOpen || menuOpen) ? "hidden" : ""; return () => { document.body.style.overflow = ""; }; }, [searchOpen, menuOpen]);
+
   return (
     <main className={styles.page} dir="rtl">
       <header className={styles.header}>
@@ -43,11 +53,30 @@ export default function DesignPreviewPage() {
           </nav>
 
           <div className={styles.headerTools}>
-            <button className={styles.searchButton} type="button"><Icon name="search" /><span>جستجو</span></button>
+            <button className={styles.searchButton} type="button" onClick={() => { setMenuOpen(false); setSearchOpen(true); }} aria-label="جستجو"><Icon name="search" /><span>جستجو</span></button>
+            <button className={styles.menuButton} type="button" onClick={() => { setSearchOpen(false); setMenuOpen(true); }} aria-label="باز کردن منو"><span></span><span></span><span></span></button>
             <Link href="/ostan-ha" className={styles.headerAction}>پیدا کردن قالیشویی</Link>
           </div>
         </div>
       </header>
+
+      {searchOpen && <div className={styles.overlay} onMouseDown={() => setSearchOpen(false)}>
+        <div className={styles.searchSheet} onMouseDown={(e) => e.stopPropagation()}>
+          <button className={styles.closeButton} onClick={() => setSearchOpen(false)} aria-label="بستن">×</button>
+          <span className={styles.eyebrow}>جستجو</span>
+          <h2>دنبال چه قالیشویی هستی؟</h2>
+          <div className={styles.searchField}><Icon name="search" /><input ref={inputRef} value={query} onChange={(e) => setQuery(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter" && query.trim()) window.location.href = `/search?q=${encodeURIComponent(query.trim())}`; }} placeholder="نام شهر، محله یا قالیشویی..." /><button type="button" onClick={() => query.trim() && (window.location.href = `/search?q=${encodeURIComponent(query.trim())}`)}>جستجو</button></div>
+          <div className={styles.searchSuggestions}><span>پیشنهادها</span><button onClick={() => setQuery("تهران")}>تهران</button><button onClick={() => setQuery("سعادت‌آباد")}>سعادت‌آباد</button><button onClick={() => setQuery("قالیشویی")}>قالیشویی</button></div>
+        </div>
+      </div>}
+
+      {menuOpen && <div className={styles.menuOverlay} onMouseDown={() => setMenuOpen(false)}>
+        <aside className={styles.menuSheet} onMouseDown={(e) => e.stopPropagation()}>
+          <div className={styles.menuTop}><strong>منو</strong><button onClick={() => setMenuOpen(false)} aria-label="بستن">×</button></div>
+          <nav><a href="#cleaners" onClick={() => setMenuOpen(false)}>قالیشویی‌ها</a><a href="#prices" onClick={() => setMenuOpen(false)}>قیمت خدمات</a><a href="#guide" onClick={() => setMenuOpen(false)}>راهنمای انتخاب</a><Link href="/ostan-ha" onClick={() => setMenuOpen(false)}>استان‌ها</Link></nav>
+          <Link href="/ostan-ha" className={styles.menuCTA} onClick={() => setMenuOpen(false)}>پیدا کردن قالیشویی</Link>
+        </aside>
+      </div>}
 
       <section className={styles.hero}>
         <div className={styles.heroContent}>
