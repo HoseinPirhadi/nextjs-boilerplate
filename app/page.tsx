@@ -50,7 +50,6 @@ function CleanerCard({ cleaner, featured = false }: { cleaner: typeof featuredCl
             </div>
             <div className="m3-cleaner-meta">
               {cleaner.ad && <span className="m3-featured-label">پیشنهاد ویژه</span>}
-              {cleaner.verified && <span className="m3-verified"><Icon name="check" /> تأیید شده</span>}
             </div>
           </div>
         </div>
