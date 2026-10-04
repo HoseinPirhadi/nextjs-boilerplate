@@ -79,12 +79,49 @@ export default function Home() {
     <main className="m3-page" dir="rtl">
       <SiteHeader />
       <section className="m3-hero">
-        <div className="m3-hero-orb m3-orb-one" /><div className="m3-hero-orb m3-orb-two" />
         <div className="m3-shell m3-hero-inner">
-          <nav className="m3-breadcrumb" aria-label="مسیر صفحه"><a href="/">قالی مپ</a><span>‹</span><a href="/ostan-ha">استان تهران</a><span>‹</span><strong>تهران</strong></nav>
+          <nav className="m3-breadcrumb" aria-label="مسیر صفحه">
+            <a href="/">قالی مپ</a><span>‹</span><a href="/ostan-ha">استان تهران</a><span>‹</span><strong>تهران</strong>
+          </nav>
+
           <div className="m3-hero-layout">
-            <div className="m3-hero-main"><span className="m3-label-large">راهنمای شهر</span><h1>قالیشویی در تهران</h1><p>قالیشویی‌های تهران را بر اساس محدوده، خدمات، وضعیت تأیید و قیمت تقریبی مقایسه کنید.</p><div className="m3-hero-stats"><div><strong>۲۴+</strong><span>مجموعه</span></div><div><strong>۸</strong><span>منطقه نمونه</span></div><div><strong>۴.۸</strong><span>امتیاز میانگین</span></div></div><div className="m3-hero-actions"><a href="#cleaners" className="m3-hero-primary">دیدن قالیشویی‌ها <Icon name="arrow" /></a><a href="#prices" className="m3-hero-secondary">مشاهده قیمت‌ها</a></div></div>
-            <aside className="m3-hero-card"><div className="m3-hero-card-icon"><Icon name="map" /></div><span className="m3-label-medium">محدوده انتخابی</span><strong>تهران</strong><p>برای رسیدن به نتیجه دقیق‌تر، محله یا منطقه موردنظر خود را از بخش مناطق انتخاب کنید.</p><a href="#areas">دیدن مناطق <Icon name="arrow" /></a></aside>
+            <div className="m3-hero-main">
+              <span className="m3-label-large">راهنمای انتخاب قالیشویی</span>
+              <h1>قالیشویی در تهران</h1>
+              <p className="m3-hero-lead">قالیشویی‌های تهران را بر اساس محدوده، خدمات و وضعیت تأیید اطلاعات مقایسه کنید و سریع‌تر به گزینه مناسب برسید.</p>
+
+              <div className="m3-hero-location" role="group" aria-label="محدوده انتخابی">
+                <span className="m3-hero-location-icon"><Icon name="map" /></span>
+                <div>
+                  <span>محدوده انتخابی</span>
+                  <strong>تهران</strong>
+                </div>
+                <a href="#areas">تغییر محدوده</a>
+              </div>
+
+              <div className="m3-hero-actions">
+                <a href="#cleaners" className="m3-hero-primary">دیدن قالیشویی‌ها <Icon name="arrow" /></a>
+                <a href="#prices" className="m3-hero-secondary">مشاهده قیمت‌ها</a>
+              </div>
+
+              <div className="m3-hero-stats" aria-label="خلاصه اطلاعات">
+                <div><strong>۲۴+</strong><span>مجموعه قابل بررسی</span></div>
+                <div><strong>۸</strong><span>منطقه نمونه</span></div>
+              </div>
+            </div>
+
+            <aside className="m3-hero-card">
+              <div className="m3-hero-card-top">
+                <span className="m3-hero-card-icon"><Icon name="map" /></span>
+                <span className="m3-label-medium">پوشش جست‌وجو</span>
+              </div>
+              <strong>تهران، منطقه به منطقه</strong>
+              <p>از محله‌های پرتردد تا محدوده‌های اطراف، نتایج را بر اساس موقعیت موردنظر محدود کنید.</p>
+              <div className="m3-hero-area-preview">
+                <span>سعادت‌آباد</span><span>شهرک غرب</span><span>پونک</span><span>ونک</span>
+              </div>
+              <a href="#areas">دیدن همه مناطق <Icon name="arrow" /></a>
+            </aside>
           </div>
         </div>
       </section>
