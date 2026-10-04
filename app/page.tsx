@@ -79,6 +79,14 @@ export default function Home() {
     <main className="m3-page" dir="rtl">
       <SiteHeader />
       <section className="m3-hero">
+        <div className="m3-hero-geometry" aria-hidden="true">
+          <span className="m3-geo-ring m3-geo-ring-one" />
+          <span className="m3-geo-ring m3-geo-ring-two" />
+          <span className="m3-geo-block m3-geo-block-one" />
+          <span className="m3-geo-block m3-geo-block-two" />
+          <span className="m3-geo-line m3-geo-line-one" />
+          <span className="m3-geo-line m3-geo-line-two" />
+        </div>
         <div className="m3-shell m3-hero-inner">
           <nav className="m3-breadcrumb" aria-label="مسیر صفحه">
             <a href="/">قالی مپ</a><span>‹</span><a href="/ostan-ha">استان تهران</a><span>‹</span><strong>تهران</strong>
@@ -92,10 +100,7 @@ export default function Home() {
 
               <div className="m3-hero-location" role="group" aria-label="محدوده انتخابی">
                 <span className="m3-hero-location-icon"><Icon name="map" /></span>
-                <div>
-                  <span>محدوده انتخابی</span>
-                  <strong>تهران</strong>
-                </div>
+                <div><span>محدوده انتخابی</span><strong>تهران</strong></div>
                 <a href="#areas">تغییر محدوده</a>
               </div>
 
@@ -111,15 +116,10 @@ export default function Home() {
             </div>
 
             <aside className="m3-hero-card">
-              <div className="m3-hero-card-top">
-                <span className="m3-hero-card-icon"><Icon name="map" /></span>
-                <span className="m3-label-medium">پوشش جست‌وجو</span>
-              </div>
+              <div className="m3-hero-card-top"><span className="m3-hero-card-icon"><Icon name="map" /></span><span className="m3-label-medium">پوشش جست‌وجو</span></div>
               <strong>تهران، منطقه به منطقه</strong>
               <p>از محله‌های پرتردد تا محدوده‌های اطراف، نتایج را بر اساس موقعیت موردنظر محدود کنید.</p>
-              <div className="m3-hero-area-preview">
-                <span>سعادت‌آباد</span><span>شهرک غرب</span><span>پونک</span><span>ونک</span>
-              </div>
+              <div className="m3-hero-area-preview"><span>سعادت‌آباد</span><span>شهرک غرب</span><span>پونک</span><span>ونک</span></div>
               <a href="#areas">دیدن همه مناطق <Icon name="arrow" /></a>
             </aside>
           </div>
