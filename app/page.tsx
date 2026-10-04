@@ -3,14 +3,14 @@ import SiteFooter from "./components/site-footer";
 import LocationAnchorNav from "./components/location-anchor-nav";
 
 const featuredCleaners = [
-  { name: "قالیشویی پاک‌نگار", description: "شست‌وشوی تخصصی فرش و خدمات تکمیلی با پوشش تهران.", verified: true, ad: true, services: ["شست‌وشوی فرش", "مبل‌شویی", "ترمیم"], logo: "پ", rating: "۴.۹" },
-  { name: "قالیشویی فرشینه", description: "جمع‌آوری و تحویل فرش با پوشش مناطق مختلف تهران.", verified: true, ad: false, services: ["قالیشویی", "موکت‌شویی", "مبل‌شویی"], logo: "ف", rating: "۴.۸" },
+  { name: "قالیشویی پاک‌نگار", description: "شست‌وشوی تخصصی فرش و خدمات تکمیلی با پوشش تهران.", verified: true, ad: true, services: ["شست‌وشوی فرش", "مبل‌شویی", "ترمیم"], logo: "پ" },
+  { name: "قالیشویی فرشینه", description: "جمع‌آوری و تحویل فرش با پوشش مناطق مختلف تهران.", verified: true, ad: false, services: ["قالیشویی", "موکت‌شویی", "مبل‌شویی"], logo: "ف" },
 ];
 
 const cleaners = [
-  { name: "قالیشویی نوین تهران", description: "خدمات قالیشویی و شست‌وشوی فرش دستباف و ماشینی.", verified: true, ad: false, services: ["قالیشویی", "فرش دستباف"], logo: "ن", rating: "۴.۷" },
-  { name: "قالیشویی گلستان", description: "پذیرش سفارش در مناطق مرکزی و غرب تهران.", verified: false, ad: false, services: ["قالیشویی", "موکت‌شویی"], logo: "گ", rating: "۴.۶" },
-  { name: "قالیشویی ایرانیان", description: "سرویس جمع‌آوری و تحویل با پوشش چند منطقه تهران.", verified: true, ad: false, services: ["قالیشویی", "مبل‌شویی"], logo: "ا", rating: "۴.۸" },
+  { name: "قالیشویی نوین تهران", description: "خدمات قالیشویی و شست‌وشوی فرش دستباف و ماشینی.", verified: true, ad: false, services: ["قالیشویی", "فرش دستباف"], logo: "ن" },
+  { name: "قالیشویی گلستان", description: "پذیرش سفارش در مناطق مرکزی و غرب تهران.", verified: false, ad: false, services: ["قالیشویی", "موکت‌شویی"], logo: "گ" },
+  { name: "قالیشویی ایرانیان", description: "سرویس جمع‌آوری و تحویل با پوشش چند منطقه تهران.", verified: true, ad: false, services: ["قالیشویی", "مبل‌شویی"], logo: "ا" },
 ];
 
 const prices = [
@@ -45,21 +45,34 @@ function CleanerCard({ cleaner, featured = false }: { cleaner: typeof featuredCl
   return (
     <article className={`m3-cleaner-card ${featured ? "is-featured" : ""}`}>
       <div className="m3-cleaner-head">
-        <div className="m3-avatar">{cleaner.logo}</div>
+        <div className="m3-avatar" aria-hidden="true">{cleaner.logo}</div>
         <div className="m3-cleaner-title">
           <div className="m3-badges">
             {cleaner.ad && <span className="m3-badge m3-badge-primary">پیشنهاد ویژه</span>}
             {cleaner.verified && <span className="m3-badge m3-badge-success"><Icon name="check" /> تأیید شده</span>}
           </div>
           <h3>{cleaner.name}</h3>
-          <span className="m3-rating"><Icon name="star" /> {cleaner.rating}</span>
         </div>
       </div>
-      <p>{cleaner.description}</p>
-      <div className="m3-chip-row">{cleaner.services.map((service) => <span className="m3-chip" key={service}>{service}</span>)}</div>
+
+      <p className="m3-cleaner-description">{cleaner.description}</p>
+
+      <div className="m3-cleaner-services" aria-label="خدمات">
+        <span className="m3-field-label">خدمات</span>
+        <div className="m3-chip-row">
+          {cleaner.services.map((service) => <span className="m3-chip" key={service}>{service}</span>)}
+        </div>
+      </div>
+
+      <div className="m3-cleaner-contact-row" aria-label="راه‌های ارتباطی">
+        <span className="m3-contact-item"><span className="m3-contact-dot">ب</span> بله</span>
+        <span className="m3-contact-item"><span className="m3-contact-dot">◎</span> اینستاگرام</span>
+        <span className="m3-contact-item"><span className="m3-contact-dot">ت</span> تلگرام</span>
+        <span className="m3-contact-item"><Icon name="phone" /> تلفن ثابت</span>
+      </div>
+
       <div className="m3-card-actions">
         <button type="button" className="m3-filled-button"><Icon name="phone" /> نمایش شماره</button>
-        <button type="button" className="m3-tonal-button">اطلاعات بیشتر <Icon name="arrow" /></button>
       </div>
     </article>
   );
