@@ -30,7 +30,7 @@ const faqs = [
 
 function Icon({ name }: { name: "arrow" | "search" | "check" | "star" | "map" | "phone" | "chevron" }) {
   const paths = {
-    arrow: <><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></>,
+    arrow: <><path d="M19 12H5" /><path d="m11 6-6 6 6 6" /></>,
     search: <><circle cx="11" cy="11" r="6.5" /><path d="m16 16 4.5 4.5" /></>,
     check: <path d="m5 12 4 4L19 6" />,
     star: <path d="m12 3.8 2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8-4.2-4.1 5.8-.8L12 3.8Z" />,
@@ -75,7 +75,7 @@ export default function Home() {
         <div className="m3-hero-orb m3-orb-two" />
         <div className="m3-shell m3-hero-inner">
           <nav className="m3-breadcrumb" aria-label="مسیر صفحه">
-            <a href="/">قالی مپ</a><span>›</span><a href="/ostan-ha">استان تهران</a><span>›</span><strong>تهران</strong>
+            <a href="/">قالی مپ</a><span>‹</span><a href="/ostan-ha">استان تهران</a><span>‹</span><strong>تهران</strong>
           </nav>
           <div className="m3-hero-layout">
             <div className="m3-hero-main">
